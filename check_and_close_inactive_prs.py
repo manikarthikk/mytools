@@ -1,6 +1,11 @@
 from github import Github
 from datetime import datetime
 
+"""
+This script will check get all the Pr's that are open for more than 60 days(we can modify number_of_days) 
+and closes the PR with a commit message
+pre-requisites: pip install PyGithub
+"""
 def github_credentials(token):
     return Github(token)
 
@@ -26,7 +31,7 @@ def is_pr_inactive(pr, number_of_days):
 def main():
     token = 'relace_with_your_githubtoken'
     git = github_credentials(token)
-    number_of_days = 1
+    number_of_days = 60
     commit_message = 'Closing due to inactivity. re-open at anytime to proceed with original request'
     github_org = 'YourGithubOrgName'
     # Iterate through  all the repositories for a provided org and commit and close based on inactivity days
